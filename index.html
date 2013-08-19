@@ -27,7 +27,17 @@
 			$("#projectLink").on("click", function(){
 				$("#main").hide();
 				$("#cv").hide();
-				$("#projects").show();
+				$.get("https://api.github.com/users/nmoroze/repos",function(data){
+					var projectList = [];
+					for (var i=0; i<data.length; i++) {
+						projectList.push("<a href=\""+data[i].html_url+"\">"+data[i].name+"</a>");
+					}
+					
+					console.log(projectList);
+					$("#githubProjects").html("<ul><li>"+projectList.join("</li><li>")+"</li></ul>");
+					console.log("<ul><li>"+projectList.join("</li><li>")+"</li></ul>");
+					$("#projects").show();
+				});
 			});
 			$("#cvLink").on("click", function(){
 				$("#main").hide();
@@ -66,7 +76,9 @@
     		<p>There will be stuff here someday!</p>
     	</div>
 	    <div id="projects">
-	    	My projects here.
+	    	<a href="https://github.com/nmoroze"><h1>Github Repos</h1></a>
+	    	<div id="githubProjects">
+	    	</div>
 	    </div>
 	    <div id="cv">
 	    	My CV here.
