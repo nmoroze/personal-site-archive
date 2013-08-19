@@ -11,6 +11,33 @@
         		padding-top: 60px;
      		}
         }
+
+        #projects, #cv{
+        	animation-duration: 1s;
+  			-webkit-animation-duration: 1s;
+  			-webkit-animation-name: slidein;
+		}
+
+		@keyframes slidein {
+			from {
+				margin-left: -20%;
+				width: 300%
+			}
+		  	to {
+			    margin-left: 0%;
+			    width: 100%;
+		  }
+		}
+		@-webkit-keyframes slidein {
+			from {
+				margin-left: -20%;
+				width: 300%
+			}
+		  	to {
+			    margin-left: 0%;
+			    width: 100%;
+		  }
+		}
     </style>
 
 	<script src="http://codeorigin.jquery.com/jquery-2.0.3.min.js"></script>
