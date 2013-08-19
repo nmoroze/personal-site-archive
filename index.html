@@ -1,1 +1,75 @@
-Hi
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Noah Moroze's Projects</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!--<link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0-rc2/css/bootstrap.min.css" rel="stylesheet"> -->
+	<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+    <style type="text/css">
+        @media (min-width:960px) {
+        	body {
+        		padding-top: 60px;
+     		}
+        }
+    </style>
+
+	<script src="http://codeorigin.jquery.com/jquery-2.0.3.min.js"></script>
+	<script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$("#cv").hide();
+			$("#projects").hide();
+			$("#homeLink").on("click", function(){
+				$("#cv").hide();
+				$("#projects").hide();
+				$("#main").show();
+			});
+			$("#projectLink").on("click", function(){
+				$("#main").hide();
+				$("#cv").hide();
+				$("#projects").show();
+			});
+			$("#cvLink").on("click", function(){
+				$("#main").hide();
+				$("#projects").hide();
+				$("#cv").show();
+			});
+		});
+	</script>
+</head>
+<body>
+    <!-- Mobile friendly navbar adapted from example. -->
+    <!-- http://twitter.github.io/bootstrap/examples/starter.template.html -->
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+		<div class="container">
+		  <button type="button" class="btn btn-navbar"
+			  data-toggle="collapse" data-target=".nav-collapse">
+		    <span class="icon-bar"></span>
+		    <span class="icon-bar"></span>
+		    <span class="icon-bar"></span>
+		  </button>
+		  <a class="brand" href="#">My Portfolio</a>
+		  <div class="nav-collapse collapse">
+		    <ul class="nav">
+		      <li class="active"><a href="#" id="homeLink">Home</a></li>
+		      <li><a href="#" id="projectLink">Projects</a></li>
+		      <li><a href="#" id="cvLink">CV</a></li>
+		    </ul>
+		   </div>
+		</div>
+      </div>
+    </div>
+    <div class="container">
+    	<div id="main">
+    		<h1> Welcome! </h1>
+    		<p>There will be stuff here someday!</p>
+    	</div>
+	    <div id="projects">
+	    	My projects here.
+	    </div>
+	    <div id="cv">
+	    	My CV here.
+	    </div>
+	</body>
+</html>
