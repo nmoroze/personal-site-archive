@@ -10,6 +10,48 @@
         	body {
         		padding-top: 60px;
      		}
+     		@keyframes slidein {
+			from {
+				margin-left: -20%;
+				width: 300%
+			}
+		  	to {
+			    margin-left: 0%;
+			    width: 100%;
+			  }
+			}
+		@-webkit-keyframes slidein {
+			from {
+				margin-left: -20%;
+				width: 300%
+			}
+		  	to {
+			    margin-left: 0%;
+			    width: 100%;
+		  }
+		}
+        }
+        @media (max-width: 480px) {
+	        @keyframes slidein {
+				from {
+					margin-left: -100%;
+					width: 300%
+				}
+			  	to {
+				    margin-left: 0%;
+				    width: 100%;
+			  }
+			}
+			@-webkit-keyframes slidein {
+				from {
+					margin-left: -200%;
+					width: 100%
+				}
+			  	to {
+				    margin-left: 0%;
+				    width: 100%;
+			  	}
+			}
         }
 
         #projects, #cv{
@@ -44,32 +86,30 @@
 	<script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function() {
+			var $currentPage = $("#main");
 			$("#cv").hide();
 			$("#projects").hide();
 			$("#homeLink").on("click", function(){
-				$("#cv").hide();
-				$("#projects").hide();
-				$("#main").show();
+				$currentPage.hide();
+				$currentPage = $("#main");
+				$currentPage.show();
 			});
 			$("#projectLink").on("click", function(){
-				$("#main").hide();
-				$("#cv").hide();
+				$currentPage.hide();
+				$currentPage = $("#projects");
 				$.get("https://api.github.com/users/nmoroze/repos",function(data){
 					var projectList = [];
 					for (var i=0; i<data.length; i++) {
 						projectList.push("<a href=\""+data[i].html_url+"\">"+data[i].name+"</a>");
-					}
-					
-					console.log(projectList);
+					}					
 					$("#githubProjects").html("<ul><li>"+projectList.join("</li><li>")+"</li></ul>");
-					console.log("<ul><li>"+projectList.join("</li><li>")+"</li></ul>");
-					$("#projects").show();
+					$currentPage.show();
 				});
 			});
 			$("#cvLink").on("click", function(){
-				$("#main").hide();
-				$("#projects").hide();
-				$("#cv").show();
+				$currentPage.hide();
+				$currentPage = $("#cv");
+				$currentPage.show();
 			});
 		});
 	</script>
