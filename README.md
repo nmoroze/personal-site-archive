@@ -1,4 +1,4 @@
 nmoroze.github.io
 =================
 
-My personal project portfolio
+Just testing Github pages - there will be stuff here in the future
