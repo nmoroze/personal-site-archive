@@ -5,6 +5,8 @@ var physics = function() {
 	var timeout;
 	var callback;
 
+	//x and y stuff are reversed because IDK
+
 	var step = function(cnt) {
 		world.Step(1.0/60, 1);
 		counter++;
@@ -31,7 +33,7 @@ var physics = function() {
 		var gravity = new b2Vec2(300,0);
 		var doSleep = true;
 		world = new b2World(worldAABB, gravity, doSleep); 
-		createBoundaries();
+		createBoundaries($j(window).width(), $j(window).height());
 		
 		$el = selector;
 		console.log($el);
@@ -51,22 +53,22 @@ var physics = function() {
 		step();
 	};
 
-	var createBoundaries = function() {
+	var createBoundaries = function(width, height) {
 		var groundSd = new b2BoxDef();
         groundSd.extents.Set(50, 1700);
         groundSd.restitution = 1.0;
         var groundBd = new b2BodyDef();
         groundBd.AddShape(groundSd);
-        groundBd.position.Set(800, 0);
+        groundBd.position.Set(height, 0);
         var edgeSd = new b2BoxDef();
         edgeSd.extents.Set(500, 50);
         edgeSd.restitution = 0.2;
         var edgeBd = new b2BodyDef();
         edgeBd.AddShape(edgeSd);
-        edgeBd.position.Set(500, 0);
+        edgeBd.position.Set(height/2, 0);
         var edge2Bd = new b2BodyDef();
         edge2Bd.AddShape(edgeSd);
-        edge2Bd.position.Set(500, 1440);
+        edge2Bd.position.Set(height/2, width);
 
         world.CreateBody(edgeBd);
         world.CreateBody(edge2Bd);
