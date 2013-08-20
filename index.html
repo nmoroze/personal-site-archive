@@ -54,7 +54,7 @@
 			}
         }
 
-        #projects, #cv{
+        .slide{
         	animation-duration: 1s;
   			-webkit-animation-duration: 1s;
   			-webkit-animation-name: slidein;
@@ -82,33 +82,43 @@
 		}
     </style>
 
+    <!--[if IE]><script type="text/javascript" src="lib/excanvas.js"></script><![endif]-->
+    <script src="lib/prototype-1.6.0.2.js"></script>
 	<script src="http://codeorigin.jquery.com/jquery-2.0.3.min.js"></script>
 	<script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+	<script src="box2d.min.js"></script>
+	<script src="physics.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function() {
-			var $currentPage = $("#main");
-			$("#cv").hide();
-			$("#projects").hide();
-			$("#homeLink").on("click", function(){
+			$j = jQuery.noConflict();
+			var $currentPage = $j("#main");
+			$j("#cv").hide();
+			$j("#projects").hide();
+			$j("#homeLink").on("click", function(){
 				$currentPage.hide();
-				$currentPage = $("#main");
+				$currentPage = $j("#main");
 				$currentPage.show();
 			});
-			$("#projectLink").on("click", function(){
+			$j("#projectLink").on("click", function(){
 				$currentPage.hide();
-				$currentPage = $("#projects");
-				$.get("https://api.github.com/users/nmoroze/repos",function(data){
-					var projectList = [];
-					for (var i=0; i<data.length; i++) {
-						projectList.push("<a href=\""+data[i].html_url+"\">"+data[i].name+"</a>");
-					}					
-					$("#githubProjects").html("<ul><li>"+projectList.join("</li><li>")+"</li></ul>");
+				$currentPage = $j("#projects");
+				$j("#githubLink").hide();
+
+				$j.get("https://api.github.com/users/nmoroze/repos",function(data){
+					// var projectList = [];
+					// for (var i=0; i<data.length; i++) 
+					// 	projectList.push("<a href=\""+data[i].html_url+"\">"+data[i].name+"</a>");
+					physics.init(data, $j("#githubProjects"), 10, function(){
+						console.log("show dat");
+						$j("#githubLink").show();
+					});
+					//$j("#githubProjects").html("<ul><li>"+projectList.join("</li><li>")+"</li></ul>");
 					$currentPage.show();
 				});
 			});
-			$("#cvLink").on("click", function(){
+			$j("#cvLink").on("click", function(){
 				$currentPage.hide();
-				$currentPage = $("#cv");
+				$currentPage = $j("#cv");
 				$currentPage.show();
 			});
 		});
@@ -131,23 +141,25 @@
 		    <ul class="nav">
 		      <li class="active"><a href="#" id="homeLink">Home</a></li>
 		      <li><a href="#" id="projectLink">Projects</a></li>
-		      <li><a href="#" id="cvLink">CV</a></li>
+		      <!--<li><a href="#" id="cvLink">CV</a></li>-->
 		    </ul>
 		   </div>
 		</div>
       </div>
     </div>
     <div class="container">
-    	<div id="main">
+    	<div id="main" class="slide">
     		<h1> Welcome! </h1>
     		<p>There will be stuff here someday!</p>
     	</div>
 	    <div id="projects">
-	    	<a href="https://github.com/nmoroze"><h1>Github Repos</h1></a>
+	    	<div id="githubLink" class="slide">
+	    		<a href="https://github.com/nmoroze"><h1>Github Repos</h1></a>
+	    	</div>
 	    	<div id="githubProjects">
 	    	</div>
 	    </div>
-	    <div id="cv">
+	    <div id="cv" class="slide">
 	    	My CV here.
 	    </div>
 	</body>
