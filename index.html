@@ -1,138 +1,140 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Noah Moroze's Projects</title>
+	<title>Noah Moroze</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<!--<link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0-rc2/css/bootstrap.min.css" rel="stylesheet"> -->
-	<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
-	<link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
-    <style type="text/css">
-        @media (min-width:960px) {
-        	body {
-        		padding-top: 60px;
-     		}
-     	}
-        @media (max-width: 480px) {
-	        
-        }
-
-        .slide{
-        	animation-duration: 1s;
-  			-webkit-animation-duration: 1s;
-  			-webkit-animation-name: slidein;
+	<link href='http://fonts.googleapis.com/css?family=Merriweather' rel='stylesheet' type='text/css'>	
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>	
+	<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet"> 
+    <style>
+    	* {
+   			margin: 0;
+   			padding: 0;
 		}
-
-		p.info {
-			font-size: 12px;
-			color: #848484;
-			font-style: italic;
-		}
-
-		i {
-			font-size: 18px;
-		}
-		@keyframes slidein {
-			from {
-				margin-left: -20%;
-				width: 300%
-			}
-		  	to {
-			    margin-left: 0%;
-			    width: 100%;
-		  }
-		}
-		@-webkit-keyframes slidein {
-			from {
-				margin-left: -20%;
-				width: 300%
-			}
-		  	to {
-			    margin-left: 0%;
-			    width: 100%;
-		  }
-		}
+    	html, body {
+    		font-size: 14pt;
+    		color: black;
+    		height: 100%;
+    	}
+    	a {
+    		color: #FBAF5C;
+    		text-decoration: none;
+    	}
+    	a:hover {
+    		color: #F7941D;
+    	}
+    	#follow {
+    		margin-top: 50px;
+    		text-align: center;
+    	}
+    	#heading-bg {
+    		font-family: 'Merriweather', serif; 
+    		margin-left: 50px;
+    		margin-right: 50px;
+    		position: relative;
+    		text-align: center;
+    		height: 150px;
+    		border-bottom: 1px solid black;
+    	}
+    	#info-bg {
+    		font-family: 'Open Sans', sans-serif;
+    		margin-left: 50px;
+    		margin-right: 50px;
+    		margin-top: 25px;
+    	}
+    	#links {
+    		bottom: 0px;
+    		margin: 0 auto;
+    		position: absolute;
+    		width: 100%;
+    	}
+    	.nav-link {
+    		font-size: 24px;
+    		color: black;
+    		padding-left: 20px;
+    		padding-right: 20px;
+    		margin: 0;
+    		text-decoration: none;
+    	}
+    	.nav-link:hover {
+    		font-size: 24px;
+    		color: black;
+    		background: #EEE;
+    	}
+    	#tagline {
+    		color: #999;
+    		font-size: 18px;
+    		margin: 0 auto;
+    	}
+    	#title {
+    		font-size: 48pt;
+    		margin: 0 auto;
+    	}
+    	ul {
+    		font-size: 16pt;
+    		list-style-type: none;
+    	}
     </style>
 
 	<script src="http://codeorigin.jquery.com/jquery-2.0.3.min.js"></script>
-	<script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+	<!--<script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>-->
 	<script type="text/javascript">
-		$(document).ready(function() {
-			var $currentPage = $("#main");
-			$("#experiments").hide();
-			$("#cv").hide();
-			$("#projects").hide();
-			$("#homeLink").on("click", function(){
-				$currentPage.hide();
-				$currentPage = $("#main");
-				$currentPage.show();
-			});
-			$("#projectLink").on("click", function(){
-				$currentPage.hide();
-				$currentPage = $("#projects");
-				$currentPage.show();
+		$(document).on("ready", function() {
+			var panels = [
+				{link: $("#me-link"), panel: $("#me")}, 
+				{link: $("#projects-link"), panel: $("#projects")},
+			];
+			var homePanel = panels[0];
+			var curPanel = homePanel;
 
+			panels.forEach(function(s) {
+				s.panel.hide();
+				s.link.on("click", function() {
+					if(s != curPanel) {
+						$(curPanel.panel).fadeOut(function() {
+							$(s.panel).fadeIn();
+						});
+						curPanel = s;
+					}
+				});
 			});
-			$("#experimentsLink").on("click", function() {
-				$currentPage.hide();
-				$currentPage = $("#experiments");
-				$currentPage.show();
-			});
-			$("#cvLink").on("click", function(){
-				$currentPage.hide();
-				$currentPage = $("#cv");
-				$currentPage.show();
-			});
+			homePanel.panel.show();
 		});
 	</script>
 </head>
 <body>
-    <!-- Mobile friendly navbar adapted from example. -->
-    <!-- http://twitter.github.io/bootstrap/examples/starter.template.html -->
-    <div class="navbar navbar-inverse navbar-fixed-top">
-      <div class="navbar-inner">
-		<div class="container">
-		  <button type="button" class="btn btn-navbar"
-			  data-toggle="collapse" data-target=".nav-collapse">
-		    <span class="icon-bar"></span>
-		    <span class="icon-bar"></span>
-		    <span class="icon-bar"></span>
-		  </button>
-		  <a class="brand" href="#">My Portfolio</a>
-		  <div class="nav-collapse collapse">
-		    <ul class="nav">
-		      <li class="active"><a href="#" id="homeLink">Home</a></li>
-		      <li><a href="#" id="projectLink">Projects</a></li>
-		      <li><a href="#" id="experimentsLink">Experiments</a></li>
-		      <!--<li><a href="#" id="cvLink">CV</a></li>-->
-		    </ul>
-		   </div>
+	<div id="heading-bg">
+		<h1 id="title">Noah Moroze</h1>
+		<em id="tagline">engineer, developer, student</em>
+		<br>
+		<div id="links">
+			<a id="me-link" href="#" class="nav-link">About Me</a>
+<!-- 			<a id="development-link" class="nav-link" href="#">Development</a>
+ --><!-- 			<a id="software-link" class="nav-link" href="#">Software</a>
+ -->		</div>
+	</div>
+	<div id="info-bg">
+		<div id="me">
+			<h2>Welcome to my site!</h2>
+			My name is Noah Moroze, and I am a sophomore in high school who enjoys software development, engineering, 
+			and just making cool stuff. You can find some of my favorite projects shared on this website.
+			<br>
+			<div id="follow">
+				Be sure to follow me to be kept updated on future projects!
+				<ul> 
+					<li><a href="https://github.com/nmoroze"><i class="fa fa-github-square"></i>/nmoroze</a></li>
+					<li><a href="https://twitter.com/NoahMoroze"><i class="fa fa-twitter-square"></i>/NoahMoroze</a></li>
+				</ul>
+			</div>
 		</div>
-      </div>
-    </div>
-    <div class="container">
-    	<div id="main" class="slide">
-    		<h1> Welcome! </h1>
-    		<p>This site has links to cool stuff I've done, and is a place for me to practice web design. Enjoy!</p>
-    	</div>
-	    <div id="projects" class="slide">
-	    	<h1>Projects</h1>
-	    	<p class="info">
-	    		Here are some links to places that house projects of mine
-	    	</p>
-	    	<p><i class="icon-github"></i> <a href="https://github.com/nmoroze">My Github</a></p>
-	    	<p><i class="icon-android"></i> <a href="https://play.google.com/store/apps/developer?id=NZM%20Tech">My apps on Google Play</a></p>
-	    	<p><i class="icon-gear"></i> <a href="http://letsmakerobots.com/user/13577">My robots on LetsMakeRobots</a></p>
-	    </div>
-	    <div id="experiments" class="slide">
-	    	<h1>Experiments</h1>
-	    	<p class="info">
-	    		Random experiments that are too unpolished/strange for the site itself
-	    	</p>
-	    	<p>
-	    		<a href="gitphysics.html">Falling Github Links</a>
-	    	</p>
-	    <div id="cv" class="slide">
-	    	My CV here.
-	    </div>
-	</body>
+		<div id="projects">
+		Lorem PROJECTS dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+		</div>
+	</div>
+</body>
 </html>
