@@ -28,13 +28,13 @@
     		text-align: center;
     	}
     	#heading-bg {
-    		font-family: 'Merriweather', serif; 
-    		margin-left: 50px;
-    		margin-right: 50px;
-    		position: relative;
-    		text-align: center;
-    		height: 150px;
-    		border-bottom: 1px solid black;
+            font-family: 'Merriweather', serif; 
+            margin-left: 50px;
+            margin-right: 50px;
+            position: relative;
+            text-align: center;
+            height: auto;
+            border-bottom: 1px solid black;
     	}
     	#info-bg {
     		font-family: 'Open Sans', sans-serif;
@@ -48,10 +48,13 @@
     		position: absolute;
     		width: 100%;
     	}
-    	.nav-link {
+        li {
+            display: inline;
+        }
+        .nav-link {
     		font-size: 24px;
     		color: black;
-    		padding-left: 20px;
+       		padding-left: 20px;
     		padding-right: 20px;
     		margin: 0;
     		text-decoration: none;
@@ -61,10 +64,19 @@
     		color: black;
     		background: #EEE;
     	}
+        #social {
+            color: black;
+            float:right;
+        }
+        i {
+            color:black;
+        }
     	#tagline {
     		color: #999;
     		font-size: 18px;
     		margin: 0 auto;
+            padding-bottom: 70px;
+            height: auto;
     	}
     	#title {
     		font-size: 48pt;
@@ -105,13 +117,15 @@
 <body>
 	<div id="heading-bg">
 		<h1 id="title">Noah Moroze</h1>
-		<em id="tagline">engineer, developer, student</em>
+		<div id="tagline"><em>engineer, developer, student</em></div>
 		<br>
 		<div id="links">
-			<a id="me-link" href="#" class="nav-link">About Me</a>
-<!-- 			<a id="development-link" class="nav-link" href="#">Development</a>
- --><!-- 			<a id="software-link" class="nav-link" href="#">Software</a>
- -->		</div>
+            <ul>
+			<li><a id="me-link" href="#" class="nav-link">about me</a></li>
+            <li><a id="projects-link" href="#" class="nav-link">projects</a></li>
+            </ul>
+            <span id="social"><a href="https://github.com/nmoroze"><i class="fa fa-github-square"></i></a>  <a href="https://twitter.com/NoahMoroze"><i class="fa fa-twitter-square"></i></a></span>
+	   </div>
 	</div>
 	<div id="info-bg">
 		<div id="me">
@@ -119,21 +133,9 @@
 			My name is Noah Moroze, and I am a sophomore in high school who enjoys software development, engineering, 
 			and just making cool stuff. You can find some of my favorite projects shared on this website.
 			<br>
-			<div id="follow">
-				Be sure to follow me to be kept updated on future projects!
-				<ul> 
-					<li><a href="https://github.com/nmoroze"><i class="fa fa-github-square"></i>/nmoroze</a></li>
-					<li><a href="https://twitter.com/NoahMoroze"><i class="fa fa-twitter-square"></i>/NoahMoroze</a></li>
-				</ul>
-			</div>
 		</div>
 		<div id="projects">
-		Lorem PROJECTS dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    		I'll have a list of projects up soon, but for now check out my <a href="https://github.com/nmoroze">Github</a>.
 		</div>
 	</div>
 </body>
