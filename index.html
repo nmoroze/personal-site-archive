@@ -1,143 +1,245 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <link rel="shortcut icon" type="image/x-icon" href="http://nmoroze.github.io/favicon.ico">
-	<title>Noah Moroze</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link href='http://fonts.googleapis.com/css?family=Merriweather' rel='stylesheet' type='text/css'>	
-	<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>	
-	<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet"> 
-    <style>
-    	* {
-   			margin: 0;
-   			padding: 0;
-		}
-    	html, body {
-    		font-size: 14pt;
-    		color: black;
-    		height: 100%;
-    	}
-    	a {
-    		color: #FBAF5C;
-    		text-decoration: none;
-    	}
-    	a:hover {
-    		color: #F7941D;
-    	}
-    	#follow {
-    		margin-top: 50px;
-    		text-align: center;
-    	}
-    	#heading-bg {
-            font-family: 'Merriweather', serif; 
-            margin-left: 50px;
-            margin-right: 50px;
-            position: relative;
-            text-align: center;
-            height: auto;
-            border-bottom: 1px solid black;
-    	}
-    	#info-bg {
-    		font-family: 'Open Sans', sans-serif;
-    		margin-left: 50px;
-    		margin-right: 50px;
-    		margin-top: 25px;
-    	}
-    	#links {
-    		bottom: 0px;
-    		margin: 0 auto;
-    		position: absolute;
-    		width: 100%;
-    	}
-        li {
-            display: inline;
-        }
-        .nav-link {
-    		font-size: 24px;
-    		color: black;
-       		padding-left: 20px;
-    		padding-right: 20px;
-    		margin: 0;
-    		text-decoration: none;
-    	}
-    	.nav-link:hover {
-    		font-size: 24px;
-    		color: black;
-    		background: #EEE;
-    	}
-        #social {
-            color: black;
-            float:right;
-        }
-        i {
-            color:black;
-        }
-    	#tagline {
-    		color: #999;
-    		font-size: 18px;
-    		margin: 0 auto;
-            padding-bottom: 70px;
-            height: auto;
-    	}
-    	#title {
-    		font-size: 48pt;
-    		margin: 0 auto;
-    	}
-    	ul {
-    		font-size: 16pt;
-    		list-style-type: none;
-    	}
-    </style>
+    <head>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+        <link href="flipper.css" rel="stylesheet">
+        <link href='http://fonts.googleapis.com/css?family=Merriweather' rel='stylesheet' type='text/css'>  
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'> 
+        <title>Noah Moroze's Projects</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            a {
+                color: #111;
+                text-decoration: none;
+            }      
+            a:hover{
+                color: #111;
+                text-decoration: none;
+            }
+            a:focus{
+                color: #111;
+                text-decoration: none;
+            }
+            body {
+                background-color: #EEE;
+                color: #111;
+                font-family: 'Open Sans';
+            }
+            h1 {
+                font-size: 48pt;
+                font-family: 'Merriweather';
+                text-align: center;
+            }
+            img {
+                -webkit-border-radius: 20px;
+                -moz-border-radius: 20px;
+                border-radius: 20px;  
 
-	<script src="http://codeorigin.jquery.com/jquery-2.0.3.min.js"></script>
-	<!--<script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>-->
-	<script type="text/javascript">
-		$(document).on("ready", function() {
-			var panels = [
-				{link: $("#me-link"), panel: $("#me")}, 
-				{link: $("#projects-link"), panel: $("#projects")},
-			];
-			var homePanel = panels[0];
-			var curPanel = homePanel;
+                width: 100%;
+            }
+            .disabled {
+                cursor: default;
+            }
+            .disabled:hover {
+                cursor: default;
+            }
+            .flip-container {
+                margin: 15px;
+            }
+            .text {
+                position: absolute;
+                bottom: 0px;
+            }
+            .back {
+                position: relative;
+                font-size: 14pt;
+            }
+            .front {
+                font-size: 16pt;
+            }
+            li {
+                display: inline;
+            }
+            .nav-link {
+                font-size: 24px;
+                padding-left: 20px;
+                padding-right: 20px;
+                margin: 0;
+                text-decoration: none;
+            }
+            #projects-container {
+                margin-top: 50px;
+            }
+            .projects-row {
+                margin-top: 25px;
+            }
+            ul {
+                font-size: 16pt;
+                padding: 0px;
+                list-style-type: none;
+            }
+        </style>
+        <script src="http://codeorigin.jquery.com/jquery-2.0.3.min.js"></script>
+        <!--<script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>-->
+        <script type="text/javascript">
+            $(document).on("ready", function() {
+                var win = $(window);
+                if (win.width() >= 768) { 
+                    $(".flipped-link").each(function() {
+                        $(this).prop("href", $(this).attr("link"));
+                        $(this).removeClass("disabled");
+                    });
+                }
+                else {
+                    $(".flipped-link").each(function() {
+                        $(this).prop("href", "javascript: void(0)");
+                        $(this).addClass("disabled");
+                    });
+                }
 
-			panels.forEach(function(s) {
-				s.panel.hide();
-				s.link.on("click", function() {
-					if(s != curPanel) {
-						$(curPanel.panel).fadeOut(function() {
-							$(s.panel).fadeIn();
-						});
-						curPanel = s;
-					}
-				});
-			});
-			homePanel.panel.show();
-		});
-	</script>
-</head>
-<body>
-	<div id="heading-bg">
-		<h1 id="title">Noah Moroze</h1>
-		<div id="tagline"><em>engineer, developer, student</em></div>
-		<br>
-		<div id="links">
-            <ul>
-			<li><a id="me-link" href="#" class="nav-link">about me</a></li>
-            <li><a id="projects-link" href="#" class="nav-link">projects</a></li>
-            </ul>
-            <span id="social"><a href="https://github.com/nmoroze"><i class="fa fa-github-square"></i></a>  <a href="https://twitter.com/NoahMoroze"><i class="fa fa-twitter-square"></i></a></span>
-	   </div>
-	</div>
-	<div id="info-bg">
-		<div id="me">
-			<h2>Welcome to my site!</h2>
-			My name is Noah Moroze, and I am a sophomore in high school who enjoys software development, engineering, 
-			and just making cool stuff. You can find some of my favorite projects shared on this website.
-			<br>
-		</div>
-		<div id="projects">
-    		I'll have a list of projects up soon, but for now check out my <a href="https://github.com/nmoroze">Github</a>.
-		</div>
-	</div>
-</body>
+                $(window).on('resize', function(){
+                    var win = $(this); //this = window
+                    if (win.width() >= 768) { 
+                        $(".flipped-link").each(function() {
+                            $(this).prop("href", $(this).attr("link"));
+                            $(this).removeClass("disabled");
+                        });
+                    }
+                    else {
+                        $(".flipped-link").each(function() {
+                            $(this).prop("href", "javascript: void(0)");
+                            $(this).addClass("disabled");
+                        });
+                    }
+                }); 
+            });
+        </script>
+    </head>
+
+    <body>
+        <center>    
+            <h1>Noah Moroze</h1>
+            <div id="links">
+                <ul>
+                    <li><a id="me-link" href="https://twitter.com/noahmoroze" class="nav-link">twitter</a></li>
+                    <li><a id="projects-link" href="https://github.com/nmoroze" class="nav-link">github</a></li>
+                </ul>
+            </div>
+            <div id="projects-container">
+                <div class="row projects-row">
+                    <div class="col-md-4" class="project" ontouchstart="this.classList.toggle('hover');">
+                        <div class="flip-container">
+                            <div class="flipper">                                               
+                                <a href="https://github.com/nmoroze/swap">
+                                    <div class="front">
+                                        <img src="project-images/swap.png"/>
+                                        <br>
+                                        <b> Swap </b>
+                                    </div>
+                                </a>
+                                <a link="https://github.com/nmoroze/swap" class="flipped-link">
+                                    <div class="back">
+                                        Swap is a new take on the classic tile-based puzzle game, developed over the course of a month by my friend and I for the 2013 Github Game Off. At the end of the contest, the judges selected our game to win the grand prize. Swap is written in Javascript using the HTML 5 canvas for rendering.
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4" class="project" ontouchstart="this.classList.toggle('hover');">
+                        <div class="flip-container">
+                                <div class="flipper">
+                                    <a href="https://github.com/Hextris/hextris">
+                                        <div class="front">
+                                            <img src="project-images/hextris.png"/>
+                                            <br>
+                                            <b> Hextris </b>
+                                        </div>
+                                    </a>
+                                    <a link="https://github.com/Hextris/hextris" class="flipped-link">
+                                        <div class="back">
+                                            Hextris is a fast-paced puzzle game inspired by Tetris. My teammates and I developed this game at the HackExeter hackathon, where it won first prize. In subsequent months, the game received critical acclaim and has been downloaded and played by millions of users on the web and on Android and iOS devices. 
+                                        </div>
+                                    </a>
+                                </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4" class="project" ontouchstart="this.classList.toggle('hover');">
+                        <div class="flip-container">
+                            <div class="flipper">
+                                <a href="http://challengepost.com/software/flare-tm5n9">
+                                    <div class="front">
+                                        <img src="project-images/flare.png"/>
+                                        <br>
+                                        <b> Flare </b>
+                                    </div>
+                                </a>
+                                <a link="http://challengepost.com/software/flare-tm5n9" class="flipped-link">
+                                    <div class="back">
+                                        Flare is a novel communications protocol that encodes data as a sequence of colors, which are then flashed on one phone's screen and read by the camera of another phone. My teammates and I developed Flare at the PennApps X collegiate hackathon, where we came in the Top 10 and received the Best iOS app prize. 
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row projects-row">
+                    <div class="col-md-4" class="project" ontouchstart="this.classList.toggle('hover');">
+                        <div class="flip-container">
+                                <div class="flipper">
+                                    <a href="https://github.com/nmoroze/SnapchatKeeper">
+                                        <div class="front">
+                                            <img src="project-images/snapchat-keeper.jpg"/>
+                                            <br>
+                                            <b> Snapchat Keeper </b>
+                                        </div>
+                                    </a>
+                                    <a link="https://github.com/nmoroze/SnapchatKeeper" class="flipped-link">
+                                        <div class="back">
+                                            Snapchat Keeper is an Android app (requiring a rooted phone) that allows a user to secretly save images sent via Snapchat. While on the Google Play store, the app received tens of thousands of downloads before being removed for trademark reasons. I developed it as a demonstration of the lack of security found in apps such as Snapchat. 
+                                        </div>
+                                    </a>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-4" class="project" ontouchstart="this.classList.toggle('hover');">
+                        <div class="flip-container">
+                            <div class="flipper">
+                                <a href="https://github.com/nmoroze/onion-or-not">
+                                    <div class="front">
+                                        <img src="project-images/onion-or-not2.png"/>
+                                        <br>
+                                        <b> Onion or Not? </b>
+                                    </div>
+                                </a>
+                                <a link="https://github.com/nmoroze/onion-or-not" class="flipped-link">
+                                    <div class="back">
+                                        Onion or Not is a simple game I developed in order to learn more about web development. It displays an Onion headline or a ridiculous but true headline curated by reddit.com/r/nottheonion, and then challenges the user to guess if it's an Onion headline. 
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4" class="project" ontouchstart="this.classList.toggle('hover');">
+                        <div class="flip-container">
+                            <div class="flipper">
+                                <a href="https://github.com/nmoroze/peer-edit">
+                                    <div class="front">
+                                        <img src="project-images/revisely2.png"/>
+                                        <br>
+                                        <b> Revisely </b>
+                                    </div>
+                                </a>
+                                <a link="https://github.com/nmoroze/peer-edit" class="flipped-link">
+                                    <div class="back">
+                                        Revisely is a web application developed by a friend and I while following the Stanford MOOC "Startup Engineering" on Coursera. Revisely, our final project, is an application that allows users to post papers and received annotated feedback from other users, with a point system to encourage giving feedback. 
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </center>
+    </body>
 </html>
