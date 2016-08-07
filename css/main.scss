@@ -12,9 +12,9 @@
 
 // $spacing-unit:     30px;
 
-// $text-color:       #111;
-// $background-color: #fdfdfd;
-// $brand-color:      #2a7ae2;
+$text-color:       #444;
+$background-color: #fefefe;
+$brand-color:      #2a7ae2;
 
 // $grey-color:       #828282;
 // $grey-color-light: lighten($grey-color, 40%);
@@ -45,6 +45,14 @@ a.title:hover {
 	text-decoration: none; 
 }
 
+body {
+	background-color: $background-color !important;
+	color: $text-color !important;
+}
+
+.content {
+	font-size: 1.1em;
+}
 ul { 
 	margin: 0;
 	padding: 0;
@@ -58,4 +66,7 @@ li {
 
 .fa {
 	font-size: 1.3em !important;
+}
+
+.sidebar {
 }
