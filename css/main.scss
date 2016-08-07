@@ -48,6 +48,12 @@ a.title:hover {
 body {
 	background-color: $background-color !important;
 	color: $text-color !important;
+	font-family: 'Open Sans', sans-serif !important;
+}
+
+h1 {
+	font-family: 'Merriweather', serif !important; 
+	font-size: 2em;
 }
 
 .content {
@@ -64,9 +70,15 @@ li {
 	list-style:none; 
 }
 
+.img-responsive {
+	display:inline;
+}
+
 .fa {
 	font-size: 1.3em !important;
 }
 
-.sidebar {
+.date {
+	color: #aaa; 
+	font-size: 0.9em; 
 }

@@ -1,0 +1,11 @@
+---
+layout: post
+---
+
+{% if page.completed %}
+	<p class="date"> {{ page.begun | date: '%B %d, %Y'}} - {{ page.completed | date: '%B %d, %Y' }} </p>
+{% else %}
+	<p class="date"> In progress (begun {{ page.begun | date: '%B %d, %Y'}})</p>
+{% endif %}
+
+{{ content }}
