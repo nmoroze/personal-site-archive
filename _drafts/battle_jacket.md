@@ -3,6 +3,8 @@ layout: project
 title:  "Battle Vest"
 date:   2016-08-07 13:25:26 -0400
 begun: 2016-08-06
+image: /images/battle_jacket/back.jpg
+summary: DIY Heavy Metal Battle Jacket!
 ---
 
 ## Initial Work (Aug 6)
@@ -16,8 +18,8 @@ First came removing the decidedly unmetal parts of the jacket: the colorful flee
 ![Jacket to begin with](/images/battle_jacket/initial_jacket.jpg){:class="img-responsive col-md-3"}
 ![First the lining](/images/battle_jacket/removed_lining.jpg){:class="img-responsive col-md-3"}
 ![Then the hooks](/images/battle_jacket/removed_hooks.jpg){:class="img-responsive col-md-3"}
-![Then the sleeves](/images/battle_jacket/removed_sleeves.jpg){:class="img-responsive col-md-3"}  
+![Then the sleeves](/images/battle_jacket/removed_sleeves.jpg){:class="img-responsive col-md-3"}
 </div>
-
+<br>
 And now I have a beautiful blank denim canvas! Next up, patches...
-![Jacket back](/images/battle_jacket/back.jpg){:width="400px" :class="img-responsive pull-left"}
+![Jacket back](/images/battle_jacket/back.jpg){:class="img-responsive"}

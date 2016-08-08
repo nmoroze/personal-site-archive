@@ -2,8 +2,14 @@
 layout: default
 ---
 
-{% assign post = site.posts.first %}
-<h1 class="title"> {{ post.title }} </h1>
-{{ post.content }}
-
-
+<div class="archive">
+  {% for post in site.posts %}
+    <li>
+      <h1><a class="title" href="{{ post.url }}">{{ post.title }}</a> </h1>
+      <span class="date"> ({{ post.date | date: "%B %e, %Y" }})</span>
+      <br>
+      {{ post.excerpt }} 
+      <a href="{{ post.url }}">See more...</a>
+    </li> 
+  {% endfor %}  
+</div>

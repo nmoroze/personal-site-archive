@@ -1,0 +1,303 @@
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href='http://fonts.googleapis.com/css?family=Merriweather' rel='stylesheet' type='text/css'>  
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'> 
+
+    <style>
+        a {
+            color: #111;
+            text-decoration: none;
+        }      
+        a:hover{
+            color: #111;
+            text-decoration: none;
+        }
+        a:focus{
+            color: #111;
+            text-decoration: none;
+        }
+        body {
+            background-color: #EEE;
+            color: #111;
+            font-family: 'Open Sans';
+        }
+        h1 {
+            font-size: 48pt;
+            font-family: 'Merriweather';
+            text-align: center;
+        }
+        img {
+            -webkit-border-radius: 20px;
+            -moz-border-radius: 20px;
+            border-radius: 20px;  
+            width: 100%;
+        }
+        .disabled {
+            cursor: default;
+        }
+        .disabled:hover {
+            cursor: default;
+        }
+        .flip-container {
+            margin: 15px;
+        }
+        .text {
+            position: absolute;
+            bottom: 0px;
+        }
+        .back {
+            position: relative;
+            font-size: 14pt;
+        }
+        .front {
+            font-size: 16pt;
+        }
+        li {
+            display: inline;
+        }
+        .nav-link {
+            font-size: 24px;
+            padding-left: 20px;
+            padding-right: 20px;
+            margin: 0;
+            text-decoration: none;
+        }
+        #projects-container {
+            margin-top: 50px;
+        }
+        .projects-row {
+            margin-top: 25px;
+        }
+        ul {
+            font-size: 16pt;
+            padding: 0px;
+            list-style-type: none;
+        }
+
+        /* code credit http://davidwalsh.name/css-flip */
+
+@media screen and(max-width : 768px) {
+}
+
+/* Small Devices, Tablets */
+@media screen and (min-width : 768px) {
+    /* entire container, keeps perspective */
+    .flip-container {
+        perspective: 1000;
+    }
+    /* flip the pane when hovered */
+    .flip-container:hover .flipper, .flip-container.hover .flipper {
+        transform: rotateY(180deg);
+        -webkit-transform: rotateY(180deg);
+        -moz-transform: rotateY(180deg);
+    }
+
+    .flip-container, .front {
+        width: 300px;
+        height: 300px;
+    }
+
+    .back {
+        cursor: pointer !important;
+        width: 340px;
+        height: 340px;
+    }
+    /* flip speed goes here */
+    .flipper {
+        transition: 0.6s;
+        transform-style: preserve-3d;
+        -webkit-transform-style: preserve-3d;
+        -moz-transform-style: preserve-3d;
+
+        position: relative;
+    }
+
+    /* hide back of pane during swap */
+    .front, .back {
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+        -moz-backface-visibility: hidden;
+
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    /* front pane, placed above back */
+    .front {
+        z-index: 2;
+        /* for firefox 31 */
+        transform: rotateY(0deg);
+        -webkit-transform: rotateY(0deg);
+        -moz-transform: rotateY(0deg);
+    }
+
+    /* back, initially hidden pane */
+    .back {
+        transform: rotateY(180deg);
+        -webkit-transform: rotateY(180deg);
+        -moz-transform: rotateY(180deg);
+    }
+}
+    </style>
+    <script src="http://codeorigin.jquery.com/jquery-2.0.3.min.js"></script>
+    <!--<script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>-->
+    <script type="text/javascript">
+        $(document).on("ready", function() {
+            var win = $(window);
+            if (win.width() >= 768) { 
+                $(".flipped-link").each(function() {
+                    $(this).prop("href", $(this).attr("link"));
+                    $(this).removeClass("disabled");
+                });
+            }
+            else {
+                $(".flipped-link").each(function() {
+                    $(this).prop("href", "javascript: void(0)");
+                    $(this).addClass("disabled");
+                });
+            }
+            $(window).on('resize', function(){
+                var win = $(this); //this = window
+                if (win.width() >= 768) { 
+                    $(".flipped-link").each(function() {
+                        $(this).prop("href", $(this).attr("link"));
+                        $(this).removeClass("disabled");
+                    });
+                }
+                else {
+                    $(".flipped-link").each(function() {
+                        $(this).prop("href", "javascript: void(0)");
+                        $(this).addClass("disabled");
+                    });
+                }
+            }); 
+        });
+    </script>
+</head>
+
+<body>
+    <center>    
+        <a href="/"><h1>Noah Moroze</h1></a>
+        <div id="links">
+            <ul>
+                <li><a id="projects-link" href="https://github.com/nmoroze" class="nav-link">github</a></li>
+            </ul>
+        </div>
+        <div id="projects-container">
+            <div class="row projects-row">
+                <div class="col-md-4" class="project" ontouchstart="this.classList.toggle('hover');">
+                    <div class="flip-container">
+                        <div class="flipper">                                               
+                            <a href="https://github.com/nmoroze/swap">
+                                <div class="front">
+                                    <img src="images/project_images/swap.png"/>
+                                    <br>
+                                    <b> Swap </b>
+                                </div>
+                            </a>
+                            <a link="https://github.com/nmoroze/swap" class="flipped-link">
+                                <div class="back">
+                                    Swap is a new take on the classic tile-based puzzle game, developed over the course of a month by my friend and I for the 2013 Github Game Off. At the end of the contest, the judges selected our game to win the grand prize. Swap is written in Javascript using the HTML 5 canvas for rendering.
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" class="project" ontouchstart="this.classList.toggle('hover');">
+                    <div class="flip-container">
+                            <div class="flipper">
+                                <a href="https://github.com/Hextris/hextris">
+                                    <div class="front">
+                                    <img src="images/project_images/hextris.png"/>
+                                        <br>
+                                        <b> Hextris </b>
+                                    </div>
+                                </a>
+                                <a link="https://github.com/Hextris/hextris" class="flipped-link">
+                                    <div class="back">
+                                        Hextris is a fast-paced puzzle game inspired by Tetris. My teammates and I developed this game at the HackExeter hackathon, where it won first prize. In subsequent months, the game received critical acclaim and has been downloaded and played by millions of users on the web and on Android and iOS devices. 
+                                    </div>
+                                </a>
+                            </div>
+                    </div>
+                </div>
+                <div class="col-md-4" class="project" ontouchstart="this.classList.toggle('hover');">
+                    <div class="flip-container">
+                        <div class="flipper">
+                            <a href="http://challengepost.com/software/flare-tm5n9">
+                                <div class="front">
+                                    <img src="images/project_images/flare.png"/>
+                                    <br>
+                                    <b> Flare </b>
+                                </div>
+                            </a>
+                            <a link="http://challengepost.com/software/flare-tm5n9" class="flipped-link">
+                                <div class="back">
+                                    Flare is a novel communications protocol that encodes data as a sequence of colors, which are then flashed on one phone's screen and read by the camera of another phone. My teammates and I developed Flare at the PennApps X collegiate hackathon, where we came in the Top 10 and received the Best iOS app prize. 
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row projects-row">
+                <div class="col-md-4" class="project" ontouchstart="this.classList.toggle('hover');">
+                    <div class="flip-container">
+                            <div class="flipper">
+                                <a href="https://github.com/nmoroze/SnapchatKeeper">
+                                    <div class="front">
+                                        <img src="images/project_images/snapchat-keeper.jpg"/>
+                                        <br>
+                                        <b> Snapchat Keeper </b>
+                                    </div>
+                                </a>
+                                <a link="https://github.com/nmoroze/SnapchatKeeper" class="flipped-link">
+                                    <div class="back">
+                                        Snapchat Keeper is an Android app (requiring a rooted phone) that allows a user to secretly save images sent via Snapchat. While on the Google Play store, the app received tens of thousands of downloads before being removed for trademark reasons. I developed it as a demonstration of the lack of security found in apps such as Snapchat. 
+                                    </div>
+                                </a>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4" class="project" ontouchstart="this.classList.toggle('hover');">
+                    <div class="flip-container">
+                        <div class="flipper">
+                            <a href="https://github.com/nmoroze/onion-or-not">
+                                <div class="front">
+                                    <img src="images/project_images/onion-or-not2.png"/>
+                                    <br>
+                                    <b> Onion or Not? </b>
+                                </div>
+                            </a>
+                            <a link="https://github.com/nmoroze/onion-or-not" class="flipped-link">
+                                <div class="back">
+                                    Onion or Not is a simple game I developed in order to learn more about web development. It displays an Onion headline or a ridiculous but true headline curated by reddit.com/r/nottheonion, and then challenges the user to guess if it's an Onion headline. 
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" class="project" ontouchstart="this.classList.toggle('hover');">
+                    <div class="flip-container">
+                        <div class="flipper">
+                            <a href="https://github.com/nmoroze/peer-edit">
+                                <div class="front">
+                                    <img src="images/project_images/revisely2.png"/>
+                                    <br>
+                                    <b> Revisely </b>
+                                </div>
+                            </a>
+                            <a link="https://github.com/nmoroze/peer-edit" class="flipped-link">
+                                <div class="back">
+                                    Revisely is a web application developed by a friend and I while following the Stanford MOOC "Startup Engineering" on Coursera. Revisely, our final project, is an application that allows users to post papers and received annotated feedback from other users, with a point system to encourage giving feedback. 
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </center>
+</body>
