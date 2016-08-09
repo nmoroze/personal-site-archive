@@ -1,0 +1,61 @@
+@charset "utf-8";
+
+$brand-primary: #ff8512;
+$link-hover-color: darken($brand-primary, 15%); 
+$body-bg: white; 
+
+$jumbotron-bg: white; 
+
+$navbar-default-link-color: $brand-primary;
+$navbar-default-link-hover-color: $link-hover-color;
+$navbar-margin-bottom: 0px; 
+$navbar-border-radius: 0px;
+
+$font-family-sans-serif: "Open Sans", sans-serif;
+$font-family-serif: "Roboto Slab", serif; 
+$headings-font-family: $font-family-serif; 
+
+@import "bootstrap";
+
+h1 {
+	font-family: "Roboto Slab", Serif; 
+}
+
+.jumbotron {
+	border-color: $navbar-default-border; 
+	border-bottom-style: solid; 
+	border-bottom-width: 1px; 
+	text-align: center; 
+	font-size: 1.5em; 
+	.img-circle {
+		width: 100px;
+	}
+	ul {
+		display: inline-block; 
+		text-align: left; 
+	}
+}
+
+.navbar {
+	background-color: white;
+	text-align:center;
+	border-radius: 0px;  
+	.navbar-nav {
+		display:inline-block;
+		float:none;
+	}
+}
+
+.content {
+	font-size: 1.2em;
+}
+
+#projects {
+	.projects-list {
+		text-align: center; 
+		img {
+			width: 100px;
+			margin: 10px; 
+		}
+	}
+}
