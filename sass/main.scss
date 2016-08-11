@@ -10,6 +10,7 @@ $navbar-default-link-color: $brand-primary;
 $navbar-default-link-hover-color: $link-hover-color;
 $navbar-margin-bottom: 0px; 
 $navbar-border-radius: 0px;
+$navbar-height: 50px;
 
 $font-family-sans-serif: "Open Sans", sans-serif;
 $font-family-serif: "Roboto Slab", serif; 
@@ -25,8 +26,9 @@ h1 {
 	border-color: $navbar-default-border; 
 	border-bottom-style: solid; 
 	border-bottom-width: 1px; 
+	box-shadow: 0 8px 6px -6px $navbar-default-border;;
 	text-align: center; 
-	font-size: 1.5em; 
+	font-size: 1em; 
 	.img-circle {
 		width: 100px;
 	}
@@ -34,15 +36,62 @@ h1 {
 		display: inline-block; 
 		text-align: left; 
 	}
+	li:nth-child(1) {
+		list-style: none; 
+		text-indent: -1em;
+	}
+	table {
+		margin: 0 auto !important;
+		float: none !important;
+	}
+	.fa {
+		font-size: 1.3em;
+		vertical-align: middle;
+	}
+	td {
+		padding: 0px 10px;
+	}
 }
 
 .navbar {
 	background-color: white;
 	text-align:center;
-	border-radius: 0px;  
+	border-radius: 0px;
+	box-shadow: 0 8px 6px -6px $navbar-default-border;;
+	@media (min-width: $screen-sm-min) {
+		height: 300px; 
+	}
+	@media (min-width: $screen-md-min) {
+		height: $navbar-height;
+	}
+	@media (min-width: $screen-lg-min) {
+		height: $navbar-height;
+	}
+	
+	li {
+		width: 100px;
+	}
 	.navbar-nav {
 		display:inline-block;
 		float:none;
+	}
+	.badger-link {
+		padding: 0px; 
+	}
+	a.badger-link:hover {
+		color: $brand-primary;
+		text-decoration: none; 
+	}
+	.badger {
+		border: 2px solid $navbar-default-border; 
+		border-radius: 24px; 
+		box-shadow: 0 0 0.5em $navbar-default-border;
+		font-family: "Intro", sans-serif; 
+		font-size: 1.8em;
+		height: 48px;
+		width: 48px; 
+		line-height: 50px; 
+		text-align: center;
 	}
 }
 
@@ -50,12 +99,85 @@ h1 {
 	font-size: 1.2em;
 }
 
+#timeline {
+	$point-radius: 10px;
+	$current-radius: 20px; 
+	td {
+		padding-top: 19px;
+		padding-bottom: 19px; 
+	}
+	.timeline-point {
+		text-align: center;
+	}
+	.timeline-label {
+		@media (min-width: $screen-sm-min) {
+			padding-left: 10px;
+ 		}
+		@media (min-width: $screen-md-min) {
+			padding-left: 10px;
+		}
+		@media (min-width: $screen-lg-min) {
+			padding-left: 50px;
+		}
+	}
+	.point {
+		margin-left:auto;
+		margin-right:auto;
+		width: calc(#{$point-radius} * 2);
+		height: calc(#{$point-radius} * 2);
+		background: $brand-primary;
+		-moz-border-radius: $point-radius;
+		-webkit-border-radius: $point-radius;
+		border-radius: $point-radius;
+	}
+	.point:before {
+		$height: 45px;
+		content: "";
+		left: calc(#{$point-radius} - 3px); 
+    	top: -$height;
+    	position: relative;
+		display: block; 
+		width: 6px;
+		height: $height;
+		background: $brand-primary; 
+	}
+	.current {
+    	border: 5px solid $brand-primary;
+		width: calc(#{$current-radius} * 2);
+		height: calc(#{$current-radius} * 2);
+		background: inherit;
+		-moz-border-radius: $current-radius;
+		-webkit-border-radius: $current-radius;
+		border-radius: $current-radius;
+	}
+
+}
+
 #projects {
 	.projects-list {
 		text-align: center; 
 		img {
-			width: 100px;
+			width: 150px;
 			margin: 10px; 
 		}
 	}
+}
+
+footer {
+	border-top: 1px solid $navbar-default-border; 
+	text-align: center; 
+	padding: 20px; 
+}
+
+$intro-font-path: '../fonts/intro/';
+
+@font-face {
+    font-family: 'Intro';
+    src: url('#{$intro-font-path}intro-webfont.eot');
+    src: url('#{$intro-font-path}intro-webfont.eot?#iefix') format('embedded-opentype'),
+         url('#{$intro-font-path}intro-webfont.woff') format('woff'),
+         url('#{$intro-font-path}intro-webfont.ttf') format('truetype'),
+         url('#{$intro-font-path}intro-webfont.svg#intro_regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
 }

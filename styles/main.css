@@ -5813,29 +5813,121 @@ h1 {
   border-color: #e7e7e7;
   border-bottom-style: solid;
   border-bottom-width: 1px;
+  box-shadow: 0 8px 6px -6px #e7e7e7;
   text-align: center;
-  font-size: 1.5em; }
+  font-size: 1em; }
   .jumbotron .img-circle {
     width: 100px; }
   .jumbotron ul {
     display: inline-block;
     text-align: left; }
+  .jumbotron li:nth-child(1) {
+    list-style: none;
+    text-indent: -1em; }
+  .jumbotron table {
+    margin: 0 auto !important;
+    float: none !important; }
+  .jumbotron .fa {
+    font-size: 1.3em;
+    vertical-align: middle; }
+  .jumbotron td {
+    padding: 0px 10px; }
 
 .navbar {
   background-color: white;
   text-align: center;
-  border-radius: 0px; }
+  border-radius: 0px;
+  box-shadow: 0 8px 6px -6px #e7e7e7; }
+  @media (min-width: 768px) {
+    .navbar {
+      height: 300px; } }
+  @media (min-width: 992px) {
+    .navbar {
+      height: 50px; } }
+  @media (min-width: 1200px) {
+    .navbar {
+      height: 50px; } }
+  .navbar li {
+    width: 100px; }
   .navbar .navbar-nav {
     display: inline-block;
     float: none; }
+  .navbar .badger-link {
+    padding: 0px; }
+  .navbar a.badger-link:hover {
+    color: #ff8512;
+    text-decoration: none; }
+  .navbar .badger {
+    border: 2px solid #e7e7e7;
+    border-radius: 24px;
+    box-shadow: 0 0 0.5em #e7e7e7;
+    font-family: "Intro", sans-serif;
+    font-size: 1.8em;
+    height: 48px;
+    width: 48px;
+    line-height: 50px;
+    text-align: center; }
 
 .content {
   font-size: 1.2em; }
 
+#timeline td {
+  padding-top: 19px;
+  padding-bottom: 19px; }
+#timeline .timeline-point {
+  text-align: center; }
+@media (min-width: 768px) {
+  #timeline .timeline-label {
+    padding-left: 10px; } }
+@media (min-width: 992px) {
+  #timeline .timeline-label {
+    padding-left: 10px; } }
+@media (min-width: 1200px) {
+  #timeline .timeline-label {
+    padding-left: 50px; } }
+#timeline .point {
+  margin-left: auto;
+  margin-right: auto;
+  width: calc(10px * 2);
+  height: calc(10px * 2);
+  background: #ff8512;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px; }
+#timeline .point:before {
+  content: "";
+  left: calc(10px - 3px);
+  top: -45px;
+  position: relative;
+  display: block;
+  width: 6px;
+  height: 45px;
+  background: #ff8512; }
+#timeline .current {
+  border: 5px solid #ff8512;
+  width: calc(20px * 2);
+  height: calc(20px * 2);
+  background: inherit;
+  -moz-border-radius: 20px;
+  -webkit-border-radius: 20px;
+  border-radius: 20px; }
+
 #projects .projects-list {
   text-align: center; }
   #projects .projects-list img {
-    width: 100px;
+    width: 150px;
     margin: 10px; }
+
+footer {
+  border-top: 1px solid #e7e7e7;
+  text-align: center;
+  padding: 20px; }
+
+@font-face {
+  font-family: 'Intro';
+  src: url("../fonts/intro/intro-webfont.eot");
+  src: url("../fonts/intro/intro-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/intro/intro-webfont.woff") format("woff"), url("../fonts/intro/intro-webfont.ttf") format("truetype"), url("../fonts/intro/intro-webfont.svg#intro_regular") format("svg");
+  font-weight: normal;
+  font-style: normal; }
 
 /*# sourceMappingURL=main.css.map */
